@@ -21,6 +21,7 @@ class LinkedInClone extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      title: 'LinkedIn Clone',
       initialRoute: LoadingScreen.screen_id,
       routes: {
         LoadingScreen.screen_id: (context) => LoadingScreen(),

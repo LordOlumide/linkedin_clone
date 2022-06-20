@@ -7,13 +7,14 @@ import 'package:linkedin_clone/general_components/bottom_navigation_bar.dart';
 class HomeScreen extends StatelessWidget {
   static const screen_id = 'home_screen';
 
+  PreferredSizeWidget appbar = CustomAppBar1();
   Widget navigationBar = CustomNavigationBar();
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.grey[300],
-      appBar: CustomAppBar(context),
+      appBar: appbar,
       bottomNavigationBar: navigationBar,
     );
   }

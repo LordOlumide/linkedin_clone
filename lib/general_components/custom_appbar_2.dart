@@ -3,8 +3,8 @@ import 'package:linkedin_clone/screens/messaging_screen/messaging_screen.dart';
 import 'package:linkedin_clone/screens/search_screen/search_screen.dart';
 import 'package:linkedin_clone/screens/profile_screen/profile_screen.dart';
 
-class CustomAppBar1 extends StatelessWidget implements PreferredSizeWidget {
-  const CustomAppBar1({Key? key}) : super(key: key);
+class CustomAppBar2 extends StatelessWidget implements PreferredSizeWidget {
+  const CustomAppBar2({Key? key}) : super(key: key);
 
   @override
   Size get preferredSize => Size.fromHeight(50);
@@ -63,12 +63,19 @@ class CustomAppBar1 extends StatelessWidget implements PreferredSizeWidget {
       // This contains the message iconButton
       actions: [
         IconButton(
+          onPressed: () {},
+          icon: Icon(
+            Icons.more_vert,
+            color: Colors.grey[600],
+          ),
+        ),
+        IconButton(
           onPressed: () {
             Navigator.pushNamed(context, MessagingScreen.screen_id);
           },
           icon: Icon(
             Icons.message,
-            color: Colors.grey[700],
+            color: Colors.grey[600],
           ),
         ),
       ],
