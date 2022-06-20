@@ -1,6 +1,16 @@
 import 'package:flutter/material.dart';
-import 'package:linkedin_clone/screens/home_screen/home_screen.dart';
+
+// components
 import 'navigation_bar_item.dart';
+
+// screens
+import 'package:linkedin_clone/screens/home_screen/home_screen.dart';
+import 'package:linkedin_clone/screens/post_screen/post_screen.dart';
+import 'package:linkedin_clone/screens/jobs_screen/jobs_screen.dart';
+import 'package:linkedin_clone/screens/my_network_screen/'
+    'my_network_screen.dart';
+import 'package:linkedin_clone/screens/notifications_screen/'
+    'notifications_screen.dart';
 
 class CustomNavigationBar extends StatefulWidget {
   const CustomNavigationBar({Key? key}) : super(key: key);
@@ -17,6 +27,9 @@ class _CustomNavigationBarState extends State<CustomNavigationBar> {
       padding: EdgeInsets.all(0),
       decoration: BoxDecoration(
         color: Colors.white,
+        border: Border(
+          top: BorderSide(width: 1, color: Colors.grey[300]!)
+        ),
       ),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceAround,
@@ -31,22 +44,32 @@ class _CustomNavigationBarState extends State<CustomNavigationBar> {
           NavigationBarItem(
             icon: Icon(Icons.people),
             title: 'My Network',
-            onPressed: () {},
+            onPressed: () {
+              Navigator.pushReplacementNamed(
+                  context, MyNetworkScreen.screen_id);
+            },
           ),
           NavigationBarItem(
             icon: Icon(Icons.add_box),
             title: 'Post',
-            onPressed: () {},
+            onPressed: () {
+              Navigator.pushReplacementNamed(context, PostScreen.screen_id);
+            },
           ),
           NavigationBarItem(
             icon: Icon(Icons.notifications),
             title: 'Notifications',
-            onPressed: () {},
+            onPressed: () {
+              Navigator.pushReplacementNamed(
+                  context, NotificationsScreen.screen_id);
+            },
           ),
           NavigationBarItem(
             icon: Icon(Icons.work),
             title: 'Jobs',
-            onPressed: () {},
+            onPressed: () {
+              Navigator.pushReplacementNamed(context, JobsScreen.screen_id);
+            },
           ),
         ],
       ),
