@@ -12,7 +12,7 @@ class CustomAppBar1 extends StatelessWidget implements PreferredSizeWidget {
   @override
   Widget build(BuildContext context) {
     return AppBar(
-      elevation: 0,
+      elevation: 1,
       backgroundColor: Colors.white,
       leadingWidth: 70,
 
@@ -21,7 +21,7 @@ class CustomAppBar1 extends StatelessWidget implements PreferredSizeWidget {
         onTap: () {
           Navigator.pushNamed(context, ProfileScreen.screen_id);
         },
-        child: Padding(
+        child: Container(
           padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 6),
           child: CircleAvatar(
             radius: 2.5,

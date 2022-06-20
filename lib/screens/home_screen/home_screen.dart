@@ -21,7 +21,7 @@ class HomeScreen extends StatelessWidget {
       body: ListView.builder(
         itemCount: posts.length,
         itemBuilder: (context, index) {
-          return Post(index: index,);
+          return Post(index: index);
         },
       ),
     );

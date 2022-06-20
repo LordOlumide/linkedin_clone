@@ -13,6 +13,7 @@ class Post extends StatelessWidget {
       color: Colors.white,
       margin: EdgeInsets.fromLTRB(0, 8, 0, 0),
       child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           // Title section of post
           Row(
@@ -111,9 +112,11 @@ class Post extends StatelessWidget {
           // Post Image
           Container(
             height: 200,
-            child: Image.asset(
-              posts[index]['post_image'],
-              fit: BoxFit.cover,
+            child: Center(
+              child: Image.asset(
+                posts[index]['post_image'],
+                fit: BoxFit.cover,
+              ),
             ),
           ),
 
@@ -121,7 +124,7 @@ class Post extends StatelessWidget {
           Container(
             child: Row(
               children: [
-                // Emoji reactions and reaction number
+                // Emoji reactions and reaction number on a button
                 Expanded(
                   child: MaterialButton(
                     onPressed: () {},
@@ -150,8 +153,8 @@ class Post extends StatelessWidget {
                             size: 8,
                           ),
                         ),
-
                         SizedBox(width: 5),
+
                         // The number of reactions
                         Text(
                           '${posts[index]['reaction_count']}',
@@ -166,7 +169,7 @@ class Post extends StatelessWidget {
                   ),
                 ),
 
-                // The number of comments
+                // The number of comments on a button
                 Expanded(
                   child: MaterialButton(
                     onPressed: () {},
