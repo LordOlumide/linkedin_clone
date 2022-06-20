@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:linkedin_clone/screens/home_screen/home_screen.dart';
 import 'navigation_bar_item.dart';
 
 class CustomNavigationBar extends StatefulWidget {
@@ -23,7 +24,9 @@ class _CustomNavigationBarState extends State<CustomNavigationBar> {
           NavigationBarItem(
             icon: Icon(Icons.home),
             title: 'Home',
-            onPressed: () {},
+            onPressed: () {
+              Navigator.pushReplacementNamed(context, HomeScreen.screen_id);
+            },
           ),
           NavigationBarItem(
             icon: Icon(Icons.people),

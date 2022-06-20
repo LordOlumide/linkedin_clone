@@ -23,25 +23,28 @@ class HomeScreen extends StatelessWidget {
         ),
         titleSpacing: 0,
         toolbarHeight: 50,
-        title: Container(
-          padding: EdgeInsets.symmetric(horizontal: 8, vertical: 7),
-          decoration: BoxDecoration(color: Colors.blueGrey[50],
-            borderRadius: BorderRadius.circular(6),
-          ),
-          child: Row(children: [
-            Icon(
-              Icons.search,
-              size: 21,
-              color: Colors.grey[700],
+        title: InkWell(
+          onTap: () {},
+          child: Container(
+            padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 7),
+            decoration: BoxDecoration(color: Colors.blueGrey[50],
+              borderRadius: BorderRadius.circular(6),
             ),
-            Text(
-              'Search',
-              style: TextStyle(
-                color: Colors.black,
-                fontSize: 14,
+            child: Row(children: [
+              Icon(
+                Icons.search,
+                size: 21,
+                color: Colors.grey[700],
               ),
-            ),
-          ]),
+              const Text(
+                'Search',
+                style: TextStyle(
+                  color: Colors.black,
+                  fontSize: 14,
+                ),
+              ),
+            ]),
+          ),
         ),
         actions: [
           IconButton(

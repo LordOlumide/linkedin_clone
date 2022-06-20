@@ -9,7 +9,7 @@ import 'package:linkedin_clone/screens/my_network_screen/my_network_screen.dart'
 import 'package:linkedin_clone/screens/notifications_screen/notifications_screen.dart';
 import 'package:linkedin_clone/screens/profile_screen/profile_screen.dart';
 import 'screens/loading_screen.dart';
-
+import 'package:linkedin_clone/screens/search_screen.dart';
 
 void main() {
   runApp(LinkedInClone());
@@ -31,6 +31,7 @@ class LinkedInClone extends StatelessWidget {
         NotificationsScreen.screen_id: (context) => NotificationsScreen(),
         PostScreen.screen_id: (context) => PostScreen(),
         ProfileScreen.screen_id: (context) => ProfileScreen(),
+        SearchScreen.screen_id: (context) => SearchScreen(),
       },
     );
   }
