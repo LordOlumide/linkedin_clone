@@ -8,7 +8,7 @@ class NotificationsScreen extends StatelessWidget {
   static const screen_id = 'notifications_screen';
 
   PreferredSizeWidget appbar = CustomAppBar1();
-  Widget navigationBar = CustomNavigationBar();
+  Widget navigationBar = CustomNavigationBar(activeScreen: screen_id);
 
   NotificationsScreen({Key? key}) : super(key: key);
 

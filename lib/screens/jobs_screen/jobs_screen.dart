@@ -8,7 +8,7 @@ class JobsScreen extends StatelessWidget {
   static const screen_id = 'jobs_screen';
 
   PreferredSizeWidget appbar = CustomAppBar2();
-  Widget navigationBar = CustomNavigationBar();
+  Widget navigationBar = CustomNavigationBar(activeScreen: screen_id);
 
   JobsScreen({Key? key}) : super(key: key);
 

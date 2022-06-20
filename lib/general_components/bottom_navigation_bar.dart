@@ -13,13 +13,18 @@ import 'package:linkedin_clone/screens/notifications_screen/'
     'notifications_screen.dart';
 
 class CustomNavigationBar extends StatefulWidget {
-  const CustomNavigationBar({Key? key}) : super(key: key);
+  final String activeScreen;
+
+  CustomNavigationBar({required this.activeScreen});
 
   @override
   State<CustomNavigationBar> createState() => _CustomNavigationBarState();
 }
 
 class _CustomNavigationBarState extends State<CustomNavigationBar> {
+  final activeIconColor = Colors.black;
+  final inactiveIconColor = Colors.grey[500];
+
   @override
   Widget build(BuildContext context) {
     // The home screen must be directly underneath every other screen
@@ -31,13 +36,17 @@ class _CustomNavigationBarState extends State<CustomNavigationBar> {
       padding: EdgeInsets.all(0),
       decoration: BoxDecoration(
         color: Colors.white,
-        border: Border(top: BorderSide(width: 1, color: Colors.grey[300]!)),
+        border: Border(top: BorderSide(width: 1, color: Colors.grey[400]!)),
       ),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceAround,
         children: [
           NavigationBarItem(
-            icon: Icon(Icons.home),
+            icon: Icon(
+              Icons.home,
+              color: widget.activeScreen == HomeScreen.screen_id
+                  ? activeIconColor : inactiveIconColor,
+            ),
             title: 'Home',
             onPressed: () {
               if (ModalRoute.of(context)!.settings.name !=
@@ -47,7 +56,11 @@ class _CustomNavigationBarState extends State<CustomNavigationBar> {
             },
           ),
           NavigationBarItem(
-            icon: Icon(Icons.people),
+            icon: Icon(
+              Icons.people,
+              color: widget.activeScreen == MyNetworkScreen.screen_id
+                  ? activeIconColor : inactiveIconColor,
+            ),
             title: 'My Network',
             onPressed: () {
               if (ModalRoute.of(context)!.settings.name ==
@@ -63,14 +76,22 @@ class _CustomNavigationBarState extends State<CustomNavigationBar> {
             },
           ),
           NavigationBarItem(
-            icon: Icon(Icons.add_box),
+            icon: Icon(
+              Icons.add_box,
+              color: widget.activeScreen == PostScreen.screen_id
+                  ? activeIconColor : inactiveIconColor,
+            ),
             title: 'Post',
             onPressed: () {
               Navigator.pushNamed(context, PostScreen.screen_id);
             },
           ),
           NavigationBarItem(
-            icon: Icon(Icons.notifications),
+            icon: Icon(
+              Icons.notifications,
+              color: widget.activeScreen == NotificationsScreen.screen_id
+                  ? activeIconColor : inactiveIconColor,
+            ),
             title: 'Notifications',
             onPressed: () {
               if (ModalRoute.of(context)!.settings.name ==
@@ -86,7 +107,11 @@ class _CustomNavigationBarState extends State<CustomNavigationBar> {
             },
           ),
           NavigationBarItem(
-            icon: Icon(Icons.work),
+            icon: Icon(
+              Icons.work,
+              color: widget.activeScreen == JobsScreen.screen_id
+                  ? activeIconColor : inactiveIconColor,
+            ),
             title: 'Jobs',
             onPressed: () {
               if (ModalRoute.of(context)!.settings.name ==

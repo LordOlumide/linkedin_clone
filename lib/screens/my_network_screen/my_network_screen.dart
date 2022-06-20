@@ -8,7 +8,7 @@ class MyNetworkScreen extends StatelessWidget {
   static const screen_id = 'my_network_screen';
 
   PreferredSizeWidget appbar = CustomAppBar1();
-  Widget navigationBar = CustomNavigationBar();
+  Widget navigationBar = CustomNavigationBar(activeScreen: screen_id);
 
   MyNetworkScreen({Key? key}) : super(key: key);
 
