@@ -16,10 +16,11 @@ List<Map<String, dynamic>> posts = [
     'user_info': 'Head of department of smash',
     'profile_picture': 'images/profile_pic.jpg',
     'post_image': 'images/post1.jpg',
-    'post_text': 'Been working on my uppercut. It\'s nice to be improving.'
+    'post_text': 'Been working on my uppercut. It\'s nice to be improving. '
         'And who stole my club!',
     'reaction_count': 394,
     'comment_count': 10,
+    'time_since_post': '5h',
   },
   {
     'username': 'Olumide Olubosede',
@@ -34,6 +35,7 @@ List<Map<String, dynamic>> posts = [
         ' semper vulputate. ',
     'reaction_count': 904,
     'comment_count': 34,
+    'time_since_post': '2d',
   },
   {
     'username': 'Bukubuku Chagama',
@@ -43,6 +45,7 @@ List<Map<String, dynamic>> posts = [
     'post_text': '',
     'reaction_count': 4,
     'comment_count': 0,
+    'time_since_post': '6m',
   },
   {
     'username': 'Gentle Criminal',
@@ -52,5 +55,6 @@ List<Map<String, dynamic>> posts = [
     'post_text': '',
     'reaction_count': 590,
     'comment_count': 90,
+    'time_since_post': '2w',
   },
 ];
