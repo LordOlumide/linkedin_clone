@@ -17,7 +17,7 @@ List<Map<String, dynamic>> posts = [
     'profile_picture': 'images/godzilla_profile_pic.jpg',
     'post_image': 'images/godzilla_pic.jpg',
     'post_text': 'Been bettering uppercut. It nice to get sttronger. '
-        'Where Godzilla! My fist hungrry!',
+        'Where King Kong! My fist hungrry!',
     'reaction_count': 394,
     'comment_count': 10,
     'time_since_post': '5h',
