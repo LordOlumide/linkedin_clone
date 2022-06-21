@@ -51,6 +51,30 @@ class InvitationsSection extends StatelessWidget {
                 inviter_info: invitations[i]['inviter_info'],
                 inviter_location: invitations[i]['inviter_location'],
               ),
+
+            // The "Show more" button at the bottom
+            Container(
+              // margin: EdgeInsets.only(top: 4),
+              child: MaterialButton(
+                elevation: 0,
+                color: Colors.white,
+                height: 40,
+                padding: EdgeInsets.all(13),
+                onPressed: () {},
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Text(
+                      'Show more',
+                      style: TextStyle(
+                        color: Colors.blue[700],
+                        fontSize: 16,
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            ),
           ],
         ),
       );

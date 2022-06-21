@@ -8,8 +8,8 @@ List<Map<String, dynamic>> recommendations = [
     'user_info': 'Guildmaster | Undead mage | Overlord',
   },
   {
-    'background_pic': 'images/gentle criminal pic.jpg',
-    'profile_pic': 'images/gentle criminal profile pic.jpg.jpg',
+    'background_pic': 'images/godzilla_pic.jpg',
+    'profile_pic': 'images/gentle criminal profile pic.jpg',
     'username': 'Gentle Criminal',
     'user_info': 'Criminal | Dad | Motivational speaker',
   },
