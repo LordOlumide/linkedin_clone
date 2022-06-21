@@ -33,10 +33,10 @@ class _CustomNavigationBarState extends State<CustomNavigationBar> {
 
     return Container(
       height: 50,
-      padding: EdgeInsets.all(0),
+      padding: const EdgeInsets.all(0),
       decoration: BoxDecoration(
         color: Colors.white,
-        border: Border(top: BorderSide(width: 1, color: Colors.grey[400]!)),
+        border: Border(top: BorderSide(width: 0.7, color: Colors.grey[400]!)),
       ),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceAround,

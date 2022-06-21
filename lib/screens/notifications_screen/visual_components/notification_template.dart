@@ -16,7 +16,7 @@ class NotificationTile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: EdgeInsets.only(bottom: 1),
+      margin: EdgeInsets.only(top: 1),
       color: Colors.white,
       width: MediaQuery.of(context).size.width,
       padding: EdgeInsets.fromLTRB(20, 10, 0, 10),
