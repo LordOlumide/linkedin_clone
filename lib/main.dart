@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 // Screens
 import 'package:linkedin_clone/screens/home_screen/home_screen.dart';
@@ -12,11 +13,15 @@ import 'screens/loading_screen.dart';
 import 'package:linkedin_clone/screens/search_screen/search_screen.dart';
 
 void main() {
+
+  SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(
+    statusBarColor: Colors.transparent,
+  ));
+
   runApp(LinkedInClone());
 }
 
 class LinkedInClone extends StatelessWidget {
-  const LinkedInClone({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

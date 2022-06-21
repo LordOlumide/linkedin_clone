@@ -4,7 +4,6 @@ import 'package:linkedin_clone/screens/search_screen/search_screen.dart';
 import 'package:linkedin_clone/screens/profile_screen/profile_screen.dart';
 
 class CustomAppBar1 extends StatelessWidget implements PreferredSizeWidget {
-  const CustomAppBar1({Key? key}) : super(key: key);
 
   @override
   Size get preferredSize => const Size.fromHeight(50);
