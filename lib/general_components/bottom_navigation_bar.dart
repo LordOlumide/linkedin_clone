@@ -27,7 +27,7 @@ class _CustomNavigationBarState extends State<CustomNavigationBar> {
   Route _postScreenPageBuilder() {
     return PageRouteBuilder(
       pageBuilder: (context, animation, secondaryAnimation) => PostScreen(),
-      transitionDuration: const Duration(milliseconds: 500),
+      transitionDuration: const Duration(milliseconds: 200),
       transitionsBuilder: (context, animation, secondaryAnimation, child) {
         const begin = Offset(0.0, 1.0);
         const end = Offset(0.0, 0.0);

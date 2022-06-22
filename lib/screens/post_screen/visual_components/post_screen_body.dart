@@ -28,13 +28,14 @@ class _PostScreenBodyState extends State<PostScreenBody> {
 
   @override
   void initState() {
-    // // This implementation works.
-    // Future.delayed(Duration(seconds: 0)).then((context) => showFirstModalBottomSheet());
+    // This implementation works.
+    Future.delayed(Duration(milliseconds: 120))
+        .then((context) => showMainBottomSheet());
 
-    // This implementation also works
-    WidgetsBinding.instance.addPostFrameCallback((timeStamp) async {
-      showMainBottomSheet();
-    });
+    // // This implementation also works but its too fast.
+    // WidgetsBinding.instance.addPostFrameCallback((timeStamp) async {
+    //   showMainBottomSheet();
+    // });
     super.initState();
   }
 

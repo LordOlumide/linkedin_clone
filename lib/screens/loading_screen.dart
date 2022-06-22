@@ -10,10 +10,24 @@ class LoadingScreen extends StatefulWidget {
 
 class _LoadingScreenState extends State<LoadingScreen> {
 
+
+  Route _noAnimationBuilder({required Widget page}) {
+    return PageRouteBuilder(
+      pageBuilder:
+          (context, animation, secondaryAnimation) => page,
+      transitionDuration: const  Duration(milliseconds: 200),
+      reverseTransitionDuration: const Duration(milliseconds: 200),
+      transitionsBuilder: (context, animation, secondaryAnimation, child) {
+        return child;
+      },
+    );
+  }
+
   loadAndPushToHomeScreen() async {
     // Simulating a delay for now
     await Future.delayed(Duration(seconds: 3));
-    Navigator.pushReplacementNamed(context, HomeScreen.screen_id);
+    Navigator.of(context).pushReplacement(
+        _noAnimationBuilder(page: HomeScreen()));
   }
 
   @override
