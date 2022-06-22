@@ -25,6 +25,37 @@ class _CustomNavigationBarState extends State<CustomNavigationBar> {
   final activeIconColor = Colors.black;
   final inactiveIconColor = Colors.grey[500];
 
+  Route _postScreenPageBuilder() {
+    return PageRouteBuilder(
+      pageBuilder: (context, animation, secondaryAnimation) => PostScreen(),
+      transitionDuration: const Duration(milliseconds: 500),
+      transitionsBuilder: (context, animation, secondaryAnimation, child) {
+        const begin = Offset(0.0, 1.0);
+        const end = Offset(0.0, 0.0);
+
+        final tween = Tween(begin: begin, end: end);
+        final offsetAnimation = animation.drive(tween);
+
+        return SlideTransition(
+          position: offsetAnimation,
+          child: child,
+        );
+      },
+    );
+  }
+
+  Route _noAnimationBuilder({required Widget page}) {
+    return PageRouteBuilder(
+      pageBuilder:
+          (context, animation, secondaryAnimation) => page,
+      transitionDuration: const  Duration(milliseconds: 200),
+      reverseTransitionDuration: const Duration(milliseconds: 200),
+      transitionsBuilder: (context, animation, secondaryAnimation, child) {
+        return child;
+      },
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     // The home screen must be directly underneath every other screen
@@ -41,6 +72,7 @@ class _CustomNavigationBarState extends State<CustomNavigationBar> {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceAround,
         children: [
+          // Home button
           NavigationBarItem(
             icon: Icon(
               Icons.home,
@@ -51,10 +83,12 @@ class _CustomNavigationBarState extends State<CustomNavigationBar> {
             onPressed: () {
               if (ModalRoute.of(context)!.settings.name !=
                   HomeScreen.screen_id) {
-                Navigator.pop(context);
+                Navigator.of(context).pop();
               }
             },
           ),
+
+          // My Network button
           NavigationBarItem(
             icon: Icon(
               Icons.people,
@@ -65,16 +99,19 @@ class _CustomNavigationBarState extends State<CustomNavigationBar> {
             onPressed: () {
               if (ModalRoute.of(context)!.settings.name ==
                   HomeScreen.screen_id) {
-                Navigator.pushNamed(context, MyNetworkScreen.screen_id);
+                Navigator.of(context).push(
+                    _noAnimationBuilder(page: MyNetworkScreen()));
               } else if (ModalRoute.of(context)!.settings.name ==
                   MyNetworkScreen.screen_id) {
                 // do nothing
               } else {
-                Navigator.pushReplacementNamed(
-                    context, MyNetworkScreen.screen_id);
+                Navigator.of(context).pushReplacement(
+                    _noAnimationBuilder(page: MyNetworkScreen()));
               }
             },
           ),
+
+          // Post button
           NavigationBarItem(
             icon: Icon(
               Icons.add_box,
@@ -83,9 +120,11 @@ class _CustomNavigationBarState extends State<CustomNavigationBar> {
             ),
             title: 'Post',
             onPressed: () {
-              Navigator.pushNamed(context, PostScreen.screen_id);
+              Navigator.of(context).push(_postScreenPageBuilder());
             },
           ),
+
+          // Notifications button
           NavigationBarItem(
             icon: Icon(
               Icons.notifications,
@@ -96,16 +135,19 @@ class _CustomNavigationBarState extends State<CustomNavigationBar> {
             onPressed: () {
               if (ModalRoute.of(context)!.settings.name ==
                   HomeScreen.screen_id) {
-                Navigator.pushNamed(context, NotificationsScreen.screen_id);
+                Navigator.of(context).push(
+                    _noAnimationBuilder(page: NotificationsScreen()));
               } else if (ModalRoute.of(context)!.settings.name ==
                   NotificationsScreen.screen_id) {
                 // do nothing
               } else {
-                Navigator.pushReplacementNamed(
-                    context, NotificationsScreen.screen_id);
+                Navigator.of(context).pushReplacement(
+                    _noAnimationBuilder(page: NotificationsScreen()));
               }
             },
           ),
+
+          // Jobs button
           NavigationBarItem(
             icon: Icon(
               Icons.work,
@@ -116,13 +158,16 @@ class _CustomNavigationBarState extends State<CustomNavigationBar> {
             onPressed: () {
               if (ModalRoute.of(context)!.settings.name ==
                   HomeScreen.screen_id) {
-                Navigator.pushNamed(context, JobsScreen.screen_id);
+                Navigator.of(context).push(
+                    _noAnimationBuilder(page: JobsScreen())
+                );
               } else if (ModalRoute.of(context)!.settings.name ==
                   JobsScreen.screen_id) {
                 // do nothing
               } else {
-                Navigator.pushReplacementNamed(
-                    context, JobsScreen.screen_id);
+                Navigator.of(context).pushReplacement(
+                    _noAnimationBuilder(page: JobsScreen())
+                );
               }
             },
           ),
