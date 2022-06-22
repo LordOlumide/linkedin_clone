@@ -1,6 +1,42 @@
 import 'package:flutter/material.dart';
+import 'bottomIconLeft.dart';
+import 'package:linkedin_clone/screens/'
+    'post_screen/pop_up_menus/main_popup.dart';
 
-class PostScreenBody extends StatelessWidget {
+class PostScreenBody extends StatefulWidget {
+
+  @override
+  State<PostScreenBody> createState() => _PostScreenBodyState();
+}
+
+class _PostScreenBodyState extends State<PostScreenBody> {
+
+  void showMainBottomSheet() {
+    showModalBottomSheet(
+      context: context,
+      isScrollControlled: true,
+      barrierColor: Colors.transparent,
+      backgroundColor: Colors.transparent,
+      builder: (context) {
+        return SingleChildScrollView(
+          child: MainPopUp(),
+          keyboardDismissBehavior: ScrollViewKeyboardDismissBehavior.onDrag,
+        );
+      },
+    );
+  }
+
+  @override
+  void initState() {
+    // // This implementation works.
+    // Future.delayed(Duration(seconds: 0)).then((context) => showFirstModalBottomSheet());
+
+    // This implementation also works
+    WidgetsBinding.instance.addPostFrameCallback((timeStamp) async {
+      showMainBottomSheet();
+    });
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -8,84 +44,88 @@ class PostScreenBody extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
         // Main Body
-        Container(
-          padding: const EdgeInsets.symmetric(horizontal: 18, vertical: 20),
-          child: Column(
-            children: [
-              // Personal info
-              Row(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  // Profile photo
-                  const CircleAvatar(
-                    radius: 25,
-                    foregroundImage: AssetImage('images/profile_pic.jpg'),
-                    backgroundColor: Colors.grey,
-                  ),
-                  const SizedBox(width: 10),
+        Expanded(
+          child: Container(
+            padding: const EdgeInsets.symmetric(horizontal: 18, vertical: 10),
+            child: ListView(
+              children: [
+                // Personal info
+                const SizedBox(height: 10), // Padding
+                Row(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    // Profile photo
+                    const CircleAvatar(
+                      radius: 25,
+                      foregroundImage: AssetImage('images/profile_pic.jpg'),
+                      backgroundColor: Colors.grey,
+                    ),
+                    const SizedBox(width: 10),
 
-                  // User_name and post_target_audience_button
-                  Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      // User_name
-                      Text(
-                        'Olumide Olubosede',
-                        style: TextStyle(
-                          fontWeight: FontWeight.w500,
-                          fontSize: 15,
+                    // User_name and post_target_audience_button
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        // User_name
+                        Text(
+                          'Olumide Olubosede',
+                          style: TextStyle(
+                            fontWeight: FontWeight.w500,
+                            fontSize: 15,
+                          ),
                         ),
-                      ),
 
-                      // post_target_audience_button
-                      TextButton(
-                        style: ButtonStyle(
-                          side: MaterialStateProperty.all<BorderSide>(
-                              BorderSide(width: 1, color: Colors.black87)),
-                          backgroundColor: MaterialStateProperty.all<Color>(
-                              Colors.transparent),
-                          shape: MaterialStateProperty.all(
-                              RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(20))),
-                        ),
-                        onPressed: () {},
-                        child: Row(
-                          children: const [
-                            Icon(
-                              Icons.location_on,
-                              size: 17,
-                              color: Colors.black87,
-                            ),
-                            Text(
-                              'Anyone',
-                              style: TextStyle(
+                        // post_target_audience_button
+                        TextButton(
+                          style: ButtonStyle(
+                            side: MaterialStateProperty.all<BorderSide>(
+                                BorderSide(width: 1, color: Colors.black87)),
+                            backgroundColor: MaterialStateProperty.all<Color>(
+                                Colors.transparent),
+                            shape: MaterialStateProperty.all(
+                                RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(20))),
+                          ),
+                          onPressed: () {},
+                          child: Row(
+                            children: const [
+                              Icon(
+                                Icons.location_on,
+                                size: 17,
                                 color: Colors.black87,
                               ),
-                            ),
-                            Icon(
-                              Icons.arrow_drop_down,
-                              size: 17,
-                              color: Colors.black87,
-                            ),
-                          ],
+                              Text(
+                                'Anyone',
+                                style: TextStyle(
+                                  color: Colors.black87,
+                                ),
+                              ),
+                              Icon(
+                                Icons.arrow_drop_down,
+                                size: 17,
+                                color: Colors.black87,
+                              ),
+                            ],
+                          ),
                         ),
-                      ),
-                    ],
-                  ),
-                ],
-              ),
-
-              // Textfield for post
-              TextField(
-                decoration: InputDecoration(
-                  hintText: 'What do you want to talk about?',
-                  hintStyle: TextStyle(fontSize: 18),
-                  border: InputBorder.none,
+                      ],
+                    ),
+                  ],
                 ),
-                style: TextStyle(fontSize: 17.5),
-                maxLines: 10,
-              ),
-            ],
+
+                // Textfield for post
+                TextField(
+                  decoration: InputDecoration(
+                    hintText: 'What do you want to talk about?',
+                    hintStyle: TextStyle(fontSize: 18),
+                    border: InputBorder.none,
+                  ),
+                  style: TextStyle(fontSize: 17.5),
+                  maxLines: null,
+                  // expands: true, // causes error. Should eventuallu use.
+                ),
+              ],
+            ),
           ),
         ),
 
@@ -98,9 +138,6 @@ class PostScreenBody extends StatelessWidget {
             Container(
               margin: EdgeInsets.symmetric(horizontal: 12),
               child: TextButton(
-                style: ButtonStyle(
-                  padding: MaterialStateProperty.all(EdgeInsets.all(7)),
-                ),
                 onPressed: () {},
                 child: Text(
                   'Add hashtag',
@@ -121,21 +158,23 @@ class PostScreenBody extends StatelessWidget {
                   // Left side icons
                   Row(
                     children: [
-                      BottomBarIconRight(
+                      BottomIconLeft(
                         iconData: Icons.photo_camera_rounded,
                         onPressed: () {},
                       ),
-                      BottomBarIconRight(
+                      BottomIconLeft(
                         iconData: Icons.videocam_rounded,
                         onPressed: () {},
                       ),
-                      BottomBarIconRight(
+                      BottomIconLeft(
                         iconData: Icons.photo,
                         onPressed: () {},
                       ),
-                      BottomBarIconRight(
+                      BottomIconLeft(
                         iconData: Icons.more_horiz,
-                        onPressed: () {},
+                        onPressed: () {
+                          showMainBottomSheet();
+                        },
                       ),
                     ],
                   ),
@@ -167,35 +206,6 @@ class PostScreenBody extends StatelessWidget {
           ],
         ),
       ],
-    );
-  }
-}
-
-
-class BottomBarIconRight extends StatelessWidget {
-  final IconData iconData;
-  final onPressed;
-
-  BottomBarIconRight({
-    required this.iconData,
-    required this.onPressed,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return GestureDetector(
-      onTap: onPressed,
-      child: Container(
-        padding: EdgeInsets.all(6),
-        margin: EdgeInsets.symmetric(horizontal: 6),
-        decoration: BoxDecoration(
-          shape: BoxShape.circle,
-        ),
-        child: Icon(
-          iconData,
-          color: Colors.black54,
-        ),
-      ),
     );
   }
 }
