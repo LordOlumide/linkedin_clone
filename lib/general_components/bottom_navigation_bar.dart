@@ -23,7 +23,6 @@ class CustomNavigationBar extends StatefulWidget {
 }
 
 class _CustomNavigationBarState extends State<CustomNavigationBar> {
-
   Route _postScreenPageBuilder() {
     return PageRouteBuilder(
       pageBuilder: (context, animation, secondaryAnimation) => PostScreen(),
@@ -40,18 +39,19 @@ class _CustomNavigationBarState extends State<CustomNavigationBar> {
           child: child,
         );
       },
+      settings: const RouteSettings(name: PostScreen.screen_id),
     );
   }
 
-  Route _noAnimationBuilder({required Widget page}) {
+  Route _noAnimationBuilder({required Widget page, required String pageName}) {
     return PageRouteBuilder(
-      pageBuilder:
-          (context, animation, secondaryAnimation) => page,
-      transitionDuration: const  Duration(milliseconds: 200),
+      pageBuilder: (context, animation, secondaryAnimation) => page,
+      transitionDuration: const Duration(milliseconds: 200),
       reverseTransitionDuration: const Duration(milliseconds: 200),
       transitionsBuilder: (context, animation, secondaryAnimation, child) {
         return child;
       },
+      settings: RouteSettings(name: pageName),
     );
   }
 
@@ -77,14 +77,16 @@ class _CustomNavigationBarState extends State<CustomNavigationBar> {
               children: [
                 // Top Indicator
                 widget.activeScreen == HomeScreen.screen_id
-                    ? ActiveIndicatorBar() : SizedBox(height: 2.6),
+                    ? ActiveIndicatorBar()
+                    : SizedBox(height: 2.6),
 
                 // Button
                 NavigationBarItem(
                   icon: Icons.home,
                   title: 'Home',
                   isActive: widget.activeScreen == HomeScreen.screen_id
-                      ? true : false,
+                      ? true
+                      : false,
                   onPressed: () {
                     if (ModalRoute.of(context)!.settings.name !=
                         HomeScreen.screen_id) {
@@ -102,25 +104,30 @@ class _CustomNavigationBarState extends State<CustomNavigationBar> {
               children: [
                 // Top Indicator
                 widget.activeScreen == MyNetworkScreen.screen_id
-                    ? ActiveIndicatorBar() : SizedBox(height: 2.6),
+                    ? ActiveIndicatorBar()
+                    : SizedBox(height: 2.6),
 
                 // Button
                 NavigationBarItem(
                   icon: Icons.people,
                   title: 'My Network',
                   isActive: widget.activeScreen == MyNetworkScreen.screen_id
-                      ? true : false,
+                      ? true
+                      : false,
                   onPressed: () {
                     if (ModalRoute.of(context)!.settings.name ==
                         HomeScreen.screen_id) {
-                      Navigator.of(context).push(
-                          _noAnimationBuilder(page: MyNetworkScreen()));
+                      Navigator.of(context).push(_noAnimationBuilder(
+                        page: MyNetworkScreen(),
+                        pageName: MyNetworkScreen.screen_id,
+                      ));
                     } else if (ModalRoute.of(context)!.settings.name ==
                         MyNetworkScreen.screen_id) {
                       // do nothing
                     } else {
-                      Navigator.of(context).pushReplacement(
-                          _noAnimationBuilder(page: MyNetworkScreen()));
+                      Navigator.of(context).pushReplacement(_noAnimationBuilder(
+                          page: MyNetworkScreen(),
+                          pageName: MyNetworkScreen.screen_id));
                     }
                   },
                 ),
@@ -134,14 +141,16 @@ class _CustomNavigationBarState extends State<CustomNavigationBar> {
               children: [
                 // Top Indicator
                 widget.activeScreen == PostScreen.screen_id
-                    ? ActiveIndicatorBar() : SizedBox(height: 2.6),
+                    ? ActiveIndicatorBar()
+                    : SizedBox(height: 2.6),
 
                 // Button
                 NavigationBarItem(
                   icon: Icons.add_box,
                   title: 'Post',
                   isActive: widget.activeScreen == PostScreen.screen_id
-                      ? true : false,
+                      ? true
+                      : false,
                   onPressed: () {
                     Navigator.of(context).push(_postScreenPageBuilder());
                   },
@@ -156,25 +165,29 @@ class _CustomNavigationBarState extends State<CustomNavigationBar> {
               children: [
                 // Top Indicator
                 widget.activeScreen == NotificationsScreen.screen_id
-                    ? ActiveIndicatorBar() : SizedBox(height: 2.6),
+                    ? ActiveIndicatorBar()
+                    : SizedBox(height: 2.6),
 
                 // Button
                 NavigationBarItem(
                   icon: Icons.notifications,
                   title: 'Notifications',
                   isActive: widget.activeScreen == NotificationsScreen.screen_id
-                      ? true : false,
+                      ? true
+                      : false,
                   onPressed: () {
                     if (ModalRoute.of(context)!.settings.name ==
                         HomeScreen.screen_id) {
-                      Navigator.of(context).push(
-                          _noAnimationBuilder(page: NotificationsScreen()));
+                      Navigator.of(context).push(_noAnimationBuilder(
+                          page: NotificationsScreen(),
+                          pageName: NotificationsScreen.screen_id));
                     } else if (ModalRoute.of(context)!.settings.name ==
                         NotificationsScreen.screen_id) {
                       // do nothing
                     } else {
-                      Navigator.of(context).pushReplacement(
-                          _noAnimationBuilder(page: NotificationsScreen()));
+                      Navigator.of(context).pushReplacement(_noAnimationBuilder(
+                          page: NotificationsScreen(),
+                          pageName: NotificationsScreen.screen_id));
                     }
                   },
                 ),
@@ -188,27 +201,27 @@ class _CustomNavigationBarState extends State<CustomNavigationBar> {
               children: [
                 // Top Indicator
                 widget.activeScreen == JobsScreen.screen_id
-                    ? ActiveIndicatorBar() : SizedBox(height: 2.6),
+                    ? ActiveIndicatorBar()
+                    : SizedBox(height: 2.6),
 
                 // Button
                 NavigationBarItem(
                   icon: Icons.work,
                   title: 'Jobs',
                   isActive: widget.activeScreen == JobsScreen.screen_id
-                      ? true : false,
+                      ? true
+                      : false,
                   onPressed: () {
                     if (ModalRoute.of(context)!.settings.name ==
                         HomeScreen.screen_id) {
-                      Navigator.of(context).push(
-                          _noAnimationBuilder(page: JobsScreen())
-                      );
+                      Navigator.of(context).push(_noAnimationBuilder(
+                          page: JobsScreen(), pageName: JobsScreen.screen_id));
                     } else if (ModalRoute.of(context)!.settings.name ==
                         JobsScreen.screen_id) {
                       // do nothing
                     } else {
-                      Navigator.of(context).pushReplacement(
-                          _noAnimationBuilder(page: JobsScreen())
-                      );
+                      Navigator.of(context).pushReplacement(_noAnimationBuilder(
+                          page: JobsScreen(), pageName: JobsScreen.screen_id));
                     }
                   },
                 ),
