@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 // components
 import 'navigation_bar_item.dart';
+import 'bottom_navigation_bar_active_indicator.dart';
 
 // screens
 import 'package:linkedin_clone/screens/home_screen/home_screen.dart';
@@ -22,8 +23,6 @@ class CustomNavigationBar extends StatefulWidget {
 }
 
 class _CustomNavigationBarState extends State<CustomNavigationBar> {
-  final activeIconColor = Colors.black;
-  final inactiveIconColor = Colors.grey[500];
 
   Route _postScreenPageBuilder() {
     return PageRouteBuilder(
@@ -73,103 +72,148 @@ class _CustomNavigationBarState extends State<CustomNavigationBar> {
         mainAxisAlignment: MainAxisAlignment.spaceAround,
         children: [
           // Home button
-          NavigationBarItem(
-            icon: Icon(
-              Icons.home,
-              color: widget.activeScreen == HomeScreen.screen_id
-                  ? activeIconColor : inactiveIconColor,
+          Expanded(
+            child: Column(
+              children: [
+                // Top Indicator
+                widget.activeScreen == HomeScreen.screen_id
+                    ? ActiveIndicatorBar() : SizedBox(height: 2.6),
+
+                // Button
+                NavigationBarItem(
+                  icon: Icons.home,
+                  title: 'Home',
+                  isActive: widget.activeScreen == HomeScreen.screen_id
+                      ? true : false,
+                  onPressed: () {
+                    if (ModalRoute.of(context)!.settings.name !=
+                        HomeScreen.screen_id) {
+                      Navigator.of(context).pop();
+                    }
+                  },
+                ),
+              ],
             ),
-            title: 'Home',
-            onPressed: () {
-              if (ModalRoute.of(context)!.settings.name !=
-                  HomeScreen.screen_id) {
-                Navigator.of(context).pop();
-              }
-            },
           ),
 
           // My Network button
-          NavigationBarItem(
-            icon: Icon(
-              Icons.people,
-              color: widget.activeScreen == MyNetworkScreen.screen_id
-                  ? activeIconColor : inactiveIconColor,
+          Expanded(
+            child: Column(
+              children: [
+                // Top Indicator
+                widget.activeScreen == MyNetworkScreen.screen_id
+                    ? ActiveIndicatorBar() : SizedBox(height: 2.6),
+
+                // Button
+                NavigationBarItem(
+                  icon: Icons.people,
+                  title: 'My Network',
+                  isActive: widget.activeScreen == MyNetworkScreen.screen_id
+                      ? true : false,
+                  onPressed: () {
+                    if (ModalRoute.of(context)!.settings.name ==
+                        HomeScreen.screen_id) {
+                      Navigator.of(context).push(
+                          _noAnimationBuilder(page: MyNetworkScreen()));
+                    } else if (ModalRoute.of(context)!.settings.name ==
+                        MyNetworkScreen.screen_id) {
+                      // do nothing
+                    } else {
+                      Navigator.of(context).pushReplacement(
+                          _noAnimationBuilder(page: MyNetworkScreen()));
+                    }
+                  },
+                ),
+              ],
             ),
-            title: 'My Network',
-            onPressed: () {
-              if (ModalRoute.of(context)!.settings.name ==
-                  HomeScreen.screen_id) {
-                Navigator.of(context).push(
-                    _noAnimationBuilder(page: MyNetworkScreen()));
-              } else if (ModalRoute.of(context)!.settings.name ==
-                  MyNetworkScreen.screen_id) {
-                // do nothing
-              } else {
-                Navigator.of(context).pushReplacement(
-                    _noAnimationBuilder(page: MyNetworkScreen()));
-              }
-            },
           ),
 
           // Post button
-          NavigationBarItem(
-            icon: Icon(
-              Icons.add_box,
-              color: widget.activeScreen == PostScreen.screen_id
-                  ? activeIconColor : inactiveIconColor,
+          Expanded(
+            child: Column(
+              children: [
+                // Top Indicator
+                widget.activeScreen == PostScreen.screen_id
+                    ? ActiveIndicatorBar() : SizedBox(height: 2.6),
+
+                // Button
+                NavigationBarItem(
+                  icon: Icons.add_box,
+                  title: 'Post',
+                  isActive: widget.activeScreen == PostScreen.screen_id
+                      ? true : false,
+                  onPressed: () {
+                    Navigator.of(context).push(_postScreenPageBuilder());
+                  },
+                ),
+              ],
             ),
-            title: 'Post',
-            onPressed: () {
-              Navigator.of(context).push(_postScreenPageBuilder());
-            },
           ),
 
           // Notifications button
-          NavigationBarItem(
-            icon: Icon(
-              Icons.notifications,
-              color: widget.activeScreen == NotificationsScreen.screen_id
-                  ? activeIconColor : inactiveIconColor,
+          Expanded(
+            child: Column(
+              children: [
+                // Top Indicator
+                widget.activeScreen == NotificationsScreen.screen_id
+                    ? ActiveIndicatorBar() : SizedBox(height: 2.6),
+
+                // Button
+                NavigationBarItem(
+                  icon: Icons.notifications,
+                  title: 'Notifications',
+                  isActive: widget.activeScreen == NotificationsScreen.screen_id
+                      ? true : false,
+                  onPressed: () {
+                    if (ModalRoute.of(context)!.settings.name ==
+                        HomeScreen.screen_id) {
+                      Navigator.of(context).push(
+                          _noAnimationBuilder(page: NotificationsScreen()));
+                    } else if (ModalRoute.of(context)!.settings.name ==
+                        NotificationsScreen.screen_id) {
+                      // do nothing
+                    } else {
+                      Navigator.of(context).pushReplacement(
+                          _noAnimationBuilder(page: NotificationsScreen()));
+                    }
+                  },
+                ),
+              ],
             ),
-            title: 'Notifications',
-            onPressed: () {
-              if (ModalRoute.of(context)!.settings.name ==
-                  HomeScreen.screen_id) {
-                Navigator.of(context).push(
-                    _noAnimationBuilder(page: NotificationsScreen()));
-              } else if (ModalRoute.of(context)!.settings.name ==
-                  NotificationsScreen.screen_id) {
-                // do nothing
-              } else {
-                Navigator.of(context).pushReplacement(
-                    _noAnimationBuilder(page: NotificationsScreen()));
-              }
-            },
           ),
 
           // Jobs button
-          NavigationBarItem(
-            icon: Icon(
-              Icons.work,
-              color: widget.activeScreen == JobsScreen.screen_id
-                  ? activeIconColor : inactiveIconColor,
+          Expanded(
+            child: Column(
+              children: [
+                // Top Indicator
+                widget.activeScreen == JobsScreen.screen_id
+                    ? ActiveIndicatorBar() : SizedBox(height: 2.6),
+
+                // Button
+                NavigationBarItem(
+                  icon: Icons.work,
+                  title: 'Jobs',
+                  isActive: widget.activeScreen == JobsScreen.screen_id
+                      ? true : false,
+                  onPressed: () {
+                    if (ModalRoute.of(context)!.settings.name ==
+                        HomeScreen.screen_id) {
+                      Navigator.of(context).push(
+                          _noAnimationBuilder(page: JobsScreen())
+                      );
+                    } else if (ModalRoute.of(context)!.settings.name ==
+                        JobsScreen.screen_id) {
+                      // do nothing
+                    } else {
+                      Navigator.of(context).pushReplacement(
+                          _noAnimationBuilder(page: JobsScreen())
+                      );
+                    }
+                  },
+                ),
+              ],
             ),
-            title: 'Jobs',
-            onPressed: () {
-              if (ModalRoute.of(context)!.settings.name ==
-                  HomeScreen.screen_id) {
-                Navigator.of(context).push(
-                    _noAnimationBuilder(page: JobsScreen())
-                );
-              } else if (ModalRoute.of(context)!.settings.name ==
-                  JobsScreen.screen_id) {
-                // do nothing
-              } else {
-                Navigator.of(context).pushReplacement(
-                    _noAnimationBuilder(page: JobsScreen())
-                );
-              }
-            },
           ),
         ],
       ),

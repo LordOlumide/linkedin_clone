@@ -1,15 +1,20 @@
 import 'package:flutter/material.dart';
 
 class NavigationBarItem extends StatelessWidget {
-  final Icon icon;
+  final IconData icon;
   final String title;
+  final bool isActive;
   final onPressed;
 
   NavigationBarItem({
     required this.icon,
     required this.title,
     required this.onPressed,
+    required this.isActive,
   });
+
+  final activeIconColor = Colors.black;
+  final inactiveIconColor = Colors.grey[500];
 
   @override
   Widget build(BuildContext context) {
@@ -25,11 +30,18 @@ class NavigationBarItem extends StatelessWidget {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              icon,
+              Icon(
+                icon,
+                color: isActive == true
+                    ? activeIconColor : inactiveIconColor,
+              ),
               Text(
                 title,
+                overflow: TextOverflow.ellipsis,
                 style: TextStyle(
                   fontSize: 10,
+                  color: isActive == true
+                    ? activeIconColor : inactiveIconColor,
                 ),
               ),
             ],
